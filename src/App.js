@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import GetAll from "./Servicie/servicie";
+import { TableComponent } from "./Component/Table/TableComponent";
+import { Form } from "./Component/Form/Form";
 
 function App() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    GetAll().then((res) => {
+      setData(res.data);
+    });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+     
+        <TableComponent data={data} />
+        <Form />
+      
+    </>
   );
 }
 
