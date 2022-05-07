@@ -1,10 +1,10 @@
-import axios from 'axios'
+// import axios from 'axios'
 
-const GetAll = ()=>{
-    return axios({
-        method: 'get',
-        url: 'https://jsonplaceholder.typicode.com/users',
-      })
-}
+// const GetAll = ()=>{
+//     return axios({
+//         method: 'get',
+//         url: 'https://jsonplaceholder.typicode.com/users',
+//       })
+// }
 
-export default GetAll
+// export default GetAll

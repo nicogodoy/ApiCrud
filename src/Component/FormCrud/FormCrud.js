@@ -1,30 +1,27 @@
 import React from "react";
 import { FormControl, FormLabel, Input, Button} from "@chakra-ui/react";
+import {useDispatch} from 'react-redux'
+import { patchUser,createUser } from "../../Redux/Action/action";
 
-export const FormComponent = ({setData,data,setInputs, input, id, setId}) => {
+
+export const FormCrud = ({setInputs, input,list}) => {
+  
+  const dispatch = useDispatch()
 
  const handleSubmit =(e)=>{
   e.preventDefault()
-  console.log(id)
-  if(id){
-    const newData = data.map((user)=>{
-      if(user.id=== id){
-         return {...input, id}
-      }
-      return user
-    })
-    setData(newData)
+  if(input.id){
+    dispatch(patchUser(input))
+ 
   }else{
-    
-    setData((data)=>{
-      return [...data, {name:e.target.name.value,email:e.target.email.value, id:data.length+1}]
-    })
+    dispatch(createUser(input))
   }
     setInputs({
       name:"",
-      email:""
+      email:"",
+      id: null
     })
-    setId(null)
+ 
   
 }
 
@@ -45,7 +42,7 @@ export const FormComponent = ({setData,data,setInputs, input, id, setId}) => {
           <Input id="email" type="email" value={input.email} onChange={handleChange}/>
         </FormControl>
         <Button mt={4} colorScheme="teal" type="submit">
-         { id ? "Editar" : "Agregar"}
+         { input.id ? "Editar" : "Agregar"}
         </Button>
       </form>
     </>

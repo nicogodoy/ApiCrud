@@ -1,30 +1,37 @@
 import React, { useEffect, useState } from "react";
-import GetAll from "./Servicie/servicie";
-import { TableComponent } from "./Component/Table/TableComponent";
-import { FormComponent } from "./Component/FormComponent/FormComponent";
+import { FormCrud } from "./Component/FormCrud/FormCrud";
 import { ChakraProvider } from '@chakra-ui/react'
+import {GetAll} from '../src/Redux/Action/action'
+import {useDispatch,useSelector} from 'react-redux'
+import { TableCrud } from "./Component/TableCrud/TableCrud";
+
+
 
 function App() {
-  const [data, setData] = useState([]);
   const [input,setInputs]= useState({
     name:"",
     email:"",
+    id: null
  }) 
- const [id,setId]=useState(null)
 
+ const dispatch = useDispatch()
+ const {list} = useSelector(state => state.users)
+
+ 
   useEffect(() => {
-    GetAll().then((res) => {
-      setData(res.data);
-    });
-  }, []);
+    
+    dispatch(GetAll());
+   
+  }, [dispatch]);
 
   return (
+   
+
     <ChakraProvider>
-       
-        <TableComponent setData={setData} data={data} setInputs={setInputs} setId={setId}/>
-        <FormComponent setData={setData} data={data} setInputs={setInputs} input={input} id={id} setId={setId}/>
-      
+        <TableCrud list={list} setInputs={setInputs} input={input} />
+        <FormCrud list={list} setInputs={setInputs} input={input} />
     </ChakraProvider>
+    
   );
 }
 
