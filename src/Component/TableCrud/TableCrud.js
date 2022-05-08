@@ -21,11 +21,12 @@ export const TableCrud = ({list, setInputs}) => {
     const handleDelete = (id) => {
         Swal.fire({
           title: 'Estas seguro que quieres eliminar?',
-          text: "no podras recuperarlo!",
+          text: "No podrás recuperarlo!",
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
+          cancelButtonText: 'Cancelar',
           confirmButtonText: 'Si, deseo eliminarlo!'
         }).then((result) => {
           if (result.isConfirmed) {
@@ -54,8 +55,8 @@ export const TableCrud = ({list, setInputs}) => {
     return (
         <>
           {list.length === 0 && <p>No hay usuarios registrados</p>}
-          <TableContainer>
-            <Table variant="simple">
+          <TableContainer  >
+            <Table size='sm' maxWidth='20%' maxHeight='20%' variant="simple" >
               <Thead>
                 <Tr>
                   <Th>Id</Th>
@@ -72,7 +73,7 @@ export const TableCrud = ({list, setInputs}) => {
                       <Td>{user.name}</Td>
                       <Td>{user.email}</Td>
                       <Td>
-                        <Button onClick={()=>{handleDelete(user.id)}}>Eliminar</Button>
+                        <Button mr={2} onClick={()=>{handleDelete(user.id)}}>Eliminar</Button>
                         <Button onClick={()=>{handlePatch(user.id)}}>Editar</Button>
                       </Td>
                     </Tr>

@@ -4,7 +4,8 @@ import { ChakraProvider } from '@chakra-ui/react'
 import {GetAll} from '../src/Redux/Action/action'
 import {useDispatch,useSelector} from 'react-redux'
 import { TableCrud } from "./Component/TableCrud/TableCrud";
-
+import { Stack,Box} from '@chakra-ui/react'
+import {TitleCrud} from '../src/Component/TitleCrud/TitleCrud'
 
 
 function App() {
@@ -26,10 +27,21 @@ function App() {
 
   return (
    
-
+    
     <ChakraProvider>
+      <Stack style={{    display: 'flex',flexDirection: 'column',alignItems: 'center'}}>
+        <Box mb={3}>
+        <TitleCrud/>
+        </Box>
+        <Stack style={{    display: 'flex',flexDirection: 'row-reverse',alignItems: 'center',justifyContent: 'space-around',flexWrap: 'nowrap'}}>
+        <Box ml={10}>
         <TableCrud list={list} setInputs={setInputs} input={input} />
+        </Box>
+        <Box  >
         <FormCrud list={list} setInputs={setInputs} input={input} />
+        </Box>
+        </Stack>
+       </Stack>
     </ChakraProvider>
     
   );

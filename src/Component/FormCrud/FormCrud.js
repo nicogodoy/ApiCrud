@@ -2,6 +2,7 @@ import React from "react";
 import { FormControl, FormLabel, Input, Button} from "@chakra-ui/react";
 import {useDispatch} from 'react-redux'
 import { patchUser,createUser } from "../../Redux/Action/action";
+import { Text } from '@chakra-ui/react'
 
 
 export const FormCrud = ({setInputs, input,list}) => {
@@ -32,7 +33,8 @@ export const FormCrud = ({setInputs, input,list}) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{display:' flex',flexDirection: 'column',alignItems: 'stretch'}}>
+        <Text fontSize='20px' as='em' >Agregar/Editar usuario</Text>
         <FormControl isRequired>
           <FormLabel htmlFor="name">Nombre</FormLabel>
           <Input id="name" placeholder="Nombre" value={input.name} onChange={handleChange}/>
@@ -41,7 +43,7 @@ export const FormCrud = ({setInputs, input,list}) => {
           <FormLabel htmlFor="email">Email</FormLabel>
           <Input id="email" type="email" value={input.email} onChange={handleChange}/>
         </FormControl>
-        <Button mt={4} colorScheme="teal" type="submit">
+        <Button mt={4} colorScheme='teal' variant='solid' type="submit">
          { input.id ? "Editar" : "Agregar"}
         </Button>
       </form>
