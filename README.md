@@ -6,6 +6,8 @@ Para intalar el proyecto en tu ordenador debes:
 *Instalar las dependencias mediante el comando ### npm install.
 *Posteriormente utilizar el comando ### npm start para iniciar la aplicación.
 
-Este proyecto fue creado con la libreria ReactJs, para los estilos se uso Chakra UI, Redux para guardar el estado de la aplicación y SweetAlert2 para las alertas!
+Este proyecto fue creado con la libreria ReactJs, para los estilos se uso Chakra UI, Redux para guardar el estado de la aplicación ,Axios para llamadas a la Api y SweetAlert2 para las alertas!
 
 Funcionalidades de la aplicación: * Agregar, eliminar y editar usuarios dentro de una tabla!
+
+Api utilizada https://jsonplaceholder.typicode.com/users.
