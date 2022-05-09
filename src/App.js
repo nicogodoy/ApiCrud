@@ -6,6 +6,7 @@ import {useDispatch,useSelector} from 'react-redux'
 import { TableCrud } from "./Component/TableCrud/TableCrud";
 import { Stack,Box} from '@chakra-ui/react'
 import {TitleCrud} from '../src/Component/TitleCrud/TitleCrud'
+import style from '../src/Style/style.css'
 
 
 function App() {
@@ -29,11 +30,11 @@ function App() {
    
     
     <ChakraProvider>
-      <Stack style={{    display: 'flex',flexDirection: 'column',alignItems: 'center'}}>
+      <Stack className="style" bg='gray.900' style={{ display: 'flex',flexDirection: 'column',alignItems: 'center'}}>
         <Box mb={3}>
         <TitleCrud/>
         </Box>
-        <Stack style={{    display: 'flex',flexDirection: 'row-reverse',alignItems: 'center',justifyContent: 'space-around',flexWrap: 'nowrap'}}>
+        <Stack style={{ display: 'flex',flexDirection: 'row-reverse',alignItems: 'center',justifyContent: 'space-around',flexWrap: 'nowrap'}}>
         <Box ml={10}>
         <TableCrud list={list} setInputs={setInputs} input={input} />
         </Box>
